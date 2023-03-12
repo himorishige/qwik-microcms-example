@@ -13,13 +13,6 @@ export type Blog = {
   eyecatch?: MicroCMSImage;
 } & MicroCMSDate;
 
-export type BlogResponse = {
-  totalCount: number;
-  offset: number;
-  limit: number;
-  contents: Blog[];
-};
-
 if (!import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -36,7 +29,7 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.get<BlogResponse>({
+  const listData = await client.getList<Blog>({
     endpoint: "blogs",
     queries,
   });
@@ -48,7 +41,7 @@ export const getDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
 ) => {
-  const detailData = await client.get<Blog>({
+  const detailData = await client.getListDetail<Blog>({
     endpoint: "blogs",
     contentId,
     queries,

@@ -9,9 +9,8 @@
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
-    "build.server": "vite build -c adapters/static/vite.config.ts",
+    "build.server": "vite build --ssr src/index.ts",
     "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -19,11 +18,13 @@
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
-    "qwik": "qwik"
+    "qwik": "qwik",
+    "deploy": "wrangler publish"
   },
   "devDependencies": {
-    "@builder.io/qwik": "0.18.1",
-    "@builder.io/qwik-city": "0.2.1",
+    "@builder.io/qwik": "^0.19.1",
+    "@builder.io/qwik-city": "^0.4.0",
+    "@cloudflare/workers-types": "^4.20230221.0",
     "@types/eslint": "8.21.0",
     "@types/node": "^18.13.0",
     "@types/node-fetch": "latest",
@@ -36,9 +37,12 @@
     "typescript": "4.9.5",
     "undici": "5.18.0",
     "vite": "4.1.1",
-    "vite-tsconfig-paths": "3.5.0"
+    "vite-tsconfig-paths": "3.5.0",
+    "wrangler": "^2.12.0"
   },
   "dependencies": {
+    "@hono/qwik-city": "^0.0.1",
+    "hono": "^3.0.2",
     "microcms-js-sdk": "^2.3.2"
   }
 }
