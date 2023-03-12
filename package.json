@@ -41,8 +41,6 @@
     "wrangler": "^2.12.0"
   },
   "dependencies": {
-    "@hono/qwik-city": "^0.0.1",
-    "hono": "^3.0.2",
     "microcms-js-sdk": "^2.3.2"
   }
 }
